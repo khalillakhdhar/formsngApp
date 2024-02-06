@@ -1,1 +1,59 @@
-<p>persons works!</p>
+<div class="container text-center">
+    <div class="row">
+      <div class="col">
+        
+      </div>
+      <div class="col">
+        <form>
+            <h2>Gestion des utilisateurs</h2>
+            <div class="mb-3">
+              <label class="form-label">Nom</label>
+                <input type="text" class="form-control" name="nom" pattern="[A-Za-z ']{2,40}" [(ngModel)]="personne.nom" #nom="ngModel" required>
+                <div  *ngIf="nom.invalid &&nom.touched " class="alert alert-danger">
+                    <div *ngIf="nom.errors?.['required']">Nom est obligatoire</div>
+                    <div *ngIf="nom.errors?.['pattern']">Nom doit contenir que des lettres</div>
+                    </div>
+
+
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Prénom</label>
+                <input type="text" class="form-control" name="prenom" pattern="[A-Za-z ']{2,40}" [(ngModel)]="personne.prenom" #prenom="ngModel" required>
+                <div  *ngIf="prenom.invalid &&prenom.touched " class="alert alert-danger">
+                    <div *ngIf="prenom.errors?.['required']">Prénom est obligatoire</div>
+                    <div *ngIf="prenom.errors?.['pattern']">Prénom doit contenir que des lettres</div>
+                    </div></div>
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" name="email" [(ngModel)]="personne.email" #email="ngModel" required>
+                <div  *ngIf="email.invalid &&email.touched " class="alert alert-danger">
+                    <div *ngIf="email.errors?.['required']">Email est obligatoire</div>
+                    <div *ngIf="email.errors?.['email']">Email doit être valide</div>
+                    </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Date de naissance</label>
+                <input type="date" class="form-control" name="dateNaissance" [(ngModel)]="personne.dateNaissance" #dateNaissance="ngModel" required>
+                <div  *ngIf="dateNaissance.invalid &&dateNaissance.touched " class="alert alert-danger">
+                    <div *ngIf="dateNaissance.errors?.['required']">Date de naissance est obligatoire</div>
+                    </div>
+                    </div>
+            <div class="mb-3">
+                <label class="form-label">Téléphone</label>
+                <input type="tel" class="form-control" name="telephone" pattern="[0-9 +]{8,}" [(ngModel)]="personne.telephone" #telephone="ngModel" required>
+                <div  *ngIf="telephone.invalid &&telephone.touched " class="alert alert-danger">
+                    <div *ngIf="telephone.errors?.['required']">Téléphone est obligatoire</div>
+                    <div *ngIf="telephone.errors?.['pattern']">Téléphone doit contenir que des chiffres et le + ou des espace</div>
+                    </div>
+                    
+                </div>
+                <input type="submit" class="btn btn-primary" value="Ajouter">
+                <br>
+                {{personne | json}}
+        </form>
+      </div>
+      <div class="col">
+        
+      </div>
+    </div>
+  </div>
