@@ -1,0 +1,55 @@
+
+<div class="container text-center">
+  <div class="row">
+    <div class="col">
+      
+    </div>
+    <div class="col">
+        <form #form1="ngForm">
+            {{adresse | json}}
+            <div class="mb-3">
+            <label class="form-label">Ville</label>
+            <input type="text" class="form-control" name="ville" pattern="[A-Za-z0-9 ]{2,40}" [(ngModel)]="adresse.ville" #ville="ngModel" required>
+            <div  *ngIf="ville.invalid &&ville.touched " class="alert alert-danger">
+                <div *ngIf="ville.errors?.['required']">Ville est obligatoire</div>
+                <div *ngIf="ville.errors?.['pattern']">Ville doit contenir que des lettres et des chiffres</div>
+                
+            </div>
+            </div>
+            <div class="mb-3">
+            <label class="form-label">Code postale:</label>
+            <input type="text" class="form-control" pattern="[0-9]{4}" [(ngModel)]="adresse.codePostal" #code="ngModel" name="codePostale" required>
+            <div  *ngIf="code.invalid &&code.touched " class="alert alert-danger">
+                <div *ngIf="code.errors?.['required']">Code postale est obligatoire</div>
+                <div *ngIf="code.errors?.['pattern']">Code postale doit contenir que des chiffres</div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Rue:</label>
+                <input type="text" class="form-control" [(ngModel)]="adresse.rue" name="rue" #rue="ngModel" required>
+                <div  *ngIf="rue.invalid &&rue.touched " class="alert alert-danger">
+                    <div *ngIf="rue.errors?.['required']">Rue est obligatoire</div>
+                    </div>
+    
+                </div>
+                <div class="mb-3">
+                <label class="form-label">Numéro</label>
+                <input type="number" class="form-control" [(ngModel)]="adresse.numero" name="numero" required #numero="ngModel" >
+                <div  *ngIf="numero.invalid &&numero.touched " class="alert alert-danger">
+                    <div *ngIf="numero.errors?.['required']">Numéro est obligatoire</div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                <label class="form-label">Adresse compléte</label>
+                <textarea class="form-control" [(ngModel)]="adresse.adresseComplete" name="adresseComplet" ></textarea>
+                </div>
+                <button type="submit" [disabled]="form1.invalid" class="btn btn-primary">Submit</button>
+
+
+        </form>
+    </div>
+    <div class="col">
+      
+    </div>
+  </div>
+</div>
